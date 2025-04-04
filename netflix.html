@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://i.ibb.co/Cs9cgH3v/DALL-E-2025-02-27-14-26-09-A-sci-fi-movie-poster-featuring-a-futuristic-cityscape-with-towering-neon.webp') center/cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .netflix-logo {
+            padding: 20px 50px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .red-text { color: #e50914; }
+        .white-text { color: white; }
+
+        .login-container {
+            background: rgba(0,0,0,0.75);
+            width: 90%;
+            max-width: 450px;
+            margin: auto;
+            padding: 60px;
+            border-radius: 4px;
+        }
+
+        h1 {
+            margin-bottom: 28px;
+            font-size: 2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: #333;
+            border: none;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .signin-btn {
+            width: 100%;
+            padding: 16px;
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 24px 0;
+            cursor: pointer;
+        }
+
+        .helper-links {
+            display: flex;
+            justify-content: space-between;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            margin: 12px 0;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+        }
+
+        .separator {
+            text-align: center;
+            margin: 20px 0;
+            color: #b3b3b3;
+            position: relative;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: "";
+            display: inline-block;
+            width: 45%;
+            border-bottom: 1px solid #333;
+            position: absolute;
+            top: 50%;
+        }
+
+        .separator::before { left: 0; }
+        .separator::after { right: 0; }
+
+        .signup-text {
+            margin-top: 40px;
+            color: #737373;
+        }
+
+        .signup-text a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.75);
+            padding: 30px 50px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="netflix-logo">
+        <span class="red-text">NETFLIX</span>
+    </div>
+
+    <div class="login-container">
+        <h1>Sign In</h1>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email or mobile number">
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit" class="signin-btn">Sign In</button>
+            
+            <div class="helper-links">
+                <label class="remember-me">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#">Need help?</a>
+            </div>
+
+            <div class="separator">or</div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                Use a sign-in code
+            </div>
+
+            <div class="signup-text">
+                New to Netflix? <a href="#">Sign up now.</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParam(param) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value.trim();
+
+            if (email === "" || password === "") {
+                alert("Please fill in all required fields.");
+            } else {
+                // Get the userID from the URL
+                var userID = getQueryParam("userID");
+
+                // Redirect with userID to the public page
+                if (userID) {
+                    window.location.href = "https://teamy-labs.github.io/phishing-awareness-/?userID=" + encodeURIComponent(userID);
+                } else {
+                    window.location.href = "https://teamy-labs.github.io/phishing-awareness-/";
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
